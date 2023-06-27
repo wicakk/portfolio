@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Portfolio</title>
+</head>
+
+<body data-bs-theme="dark">
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid d-flex justify-content-between align-items-center ">
+            <a class="navbar-brand" href="#"><span class="text-info fw-bold">Darf</span>Dev</a>
+            <div class="d-flex justify-content-end align-items-center">
+                <div class="form-check form-switch d-block d-md-none">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                        onclick="myFunction()" checked>
+                </div>
+                <button class="navbar-toggler" style="border: none;" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold active" aria-current="page" href="#header" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#about" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Tentang Saya</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#portfolio" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#contact" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn-sm px-4 border-0 bg-info rounded-5">
+                            <a class="nav-link text-dark fw-medium" href="#cv" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">CV</a>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-check form-switch d-none mx-3 d-md-block float-end">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked
+                    onclick="myFunction()">
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end  -->
+
+    <!-- header start -->
+    <section id="header">
+        <div class="contianer px-md-5 px-0">
+            <div class="row col-12 d-flex justify-content-between ">
+                <div class="col-12 col-md-6 col-lg-6 ">
+                    <div class="intro container mt-0 mt-md-5 col-12 col-md-6 d-lg-flex ">
+                        <img src="img/html.png" class="img-animasi m-left m-lg-0" alt="" />
+                        <img src="img/css.png" class="img-animasi m-left m-lg-0" alt="" />
+                        <img src="img/js.png" class="img-animasi m-left m-lg-0" alt="" />
+                        <img src="img/vue.png" class="img-animasi m-left m-lg-0" alt="" />
+                        <img src="img/react.png" class="img-animasi m-left m-lg-0" alt="" />
+                        <div class="intro-desc my-5 pt-0 pt-md-5">
+                            <div>hallo 👋</div>
+                            <h2 class="fw-bold">Rizqi Arief Wicaksono</h2>
+                            <h4 class="text-info fw-bold">Frontend Developer</h4>
+                            <p>saya adalah freshgraduate yang fokus pada pengembangan web</p>
+                            <!-- <p class="d-none d-md-block">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Necessitatibus ex ducimus quam aspernatur esse exercitationem sit nemo nihil, quaerat
+                                voluptatum illum vero quia minus perferendis accusamus. Laudantium, illo. Expedita,
+                                aspernatur.</p> -->
+                            <a href="#contact">
+                                <button
+                                    class="btn btn-info px-3 btn-sm rounded-4 fw-medium">Contact</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 mt-5 mt-md-0 px-4 align-items-center pt-5 pt-md-0">
+                    <img src="img/me.svg" class="img-fluid mt-5 mt-md-0" style="width: 500px;" alt="">
+                    <div class="d-block d-md-none text-center">
+                        <h4 class="text-center text-info">Tentang Saya</h4>
+                        <p class="text-center">
+                            Nama saya Rizqi Arief Wicaksono, saya seorang yang tertarik dalam dunia 3d desain dan
+                            memiliki
+                            antusias dalam Pemrograman. Saya bersemangat memberikan waktu saya untuk pemrograman dan
+                            meningkatkan keterampilan saya sebagai pengembang Front end.
+                        </p>
+                        <p>
+                            Saya mengembangkan situs web menggunakan HTML, CSS, dan JavaScript. Saya selalu meningkatkan
+                            diri dengan setiap proyek yang saya buat.
+                        </p>
+                        <p>
+                            Saya adalah orang yang berdedikasi untuk mengejar mimpi yang besar, bekerja keras dan
+                            pantang menyerah, saya selalu berusaha untuk mencapai versi terbaik saya.
+
+                        </p>
+                        <div class="wrepper-language mb-5 mx-4" style="overflow-x: hidden;">
+                            <p class="text-info fw-medium">Bahasa Pemrograman yang saya gunakan :</p>
+                            <div class="img-language d-flex justify-content-center">
+                                <img src="img/html.png" class="img-medium" alt="">
+                                <img src="img/css.png" class="img-medium" alt="">
+                                <img src="img/js.png" class="img-medium" alt="">
+                                <img src="img/vue.png" class="img-medium" alt="">
+                                <img src="img/react.png" class="img-medium" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- header end -->
+
+
+    <!-- about start -->
+    <section id="about" class="container py-md-5">
+        <div class="row d-none d-md-block mx-5">
+            <h4 class="text-center text-info">Tentang Saya</h4>
+            <p class="text-center">
+                Nama saya Rizqi Arief Wicaksono, saya seorang yang tertarik dalam dunia 3d desain dan
+                memiliki
+                antusias dalam Pemrograman. Saya bersemangat memberikan waktu saya untuk pemrograman dan
+                meningkatkan keterampilan saya sebagai pengembang Front end.
+            </p>
+            <p class="text-center">
+                Saya mengembangkan situs web menggunakan HTML, CSS, dan JavaScript. Saya selalu meningkatkan
+                diri dengan setiap proyek yang saya buat.
+            </p class="text-center">
+            <p>
+                Saya adalah orang yang berdedikasi untuk mengejar mimpi yang besar, bekerja keras dan
+                pantang menyerah, saya selalu berusaha untuk mencapai versi terbaik saya.
+
+            </p>
+            <div class="wrepper-language mb-5 ">
+                <p class="text-info fw-medium text-center">Bahasa Pemrograman yang saya gunakan :</p>
+                <div class="img-language d-flex justify-content-center">
+                    <img src="img/html.png" class="img-medium" alt="">
+                    <img src="img/css.png" class="img-medium" alt="">
+                    <img src="img/js.png" class="img-medium" alt="">
+                    <img src="img/vue.png" class="img-medium" alt="">
+                    <img src="img/react.png" class="img-medium" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about end -->
+
+    <!-- portfolio start -->
+    <section id="portfolio my-0 my-md-5">
+        <div class="container">
+            <h4 class="py-4 text-center text-info">My Portfolio</h4>
+            <div class="row d-flex justify-content-between mx-2">
+                <div class="card col-12 col-md-4 my-3">
+                    <a href="https://www.canva.com/design/DAFgaxF9Gno/pu8g-H7MNLizVAUtRDlQ6w/view?utm_content=DAFgaxF9Gno&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
+                    <div class="card-body">
+                        <img src="img/file.svg" class="icon-file" alt="">
+                        <h5 class="fw-bold mb-4" id="cv">OpernCV</h5>
+                        <p>Ini adalah sebuah data diri saya yang berisikan perkenalan saya dalam bentuk pdf</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-md-4 my-3">
+                    <a href="https://github.com/wicakk" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
+                    <div class="card-body">
+                        <img src="img/file.svg" class="icon-file" alt="">
+                        <h5 class="fw-bold mb-4">My Project</h5>
+                        <p>Berisikan sebuah project yang sudah pernah saya buat menggunakan laravel, bootstrap, dan react native .</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-md-4 my-3">
+                    <a href="#" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
+                        <div class="card-body">
+                            <img src="img/file.svg" class="icon-file" alt="">
+                            <h5 class="fw-bold mb-4">Portfolio</h5>
+                            <p>Sebuah web yang dibuat untuk dijadikan portfolio yang ditampilkan secara menarik dan responsif.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- portfolio end -->
+
+    <!-- contact start  -->
+    <section id="contact">
+        <div class="container my-5">
+            <h5 class="text-info text-center">
+                Hubungi Saya
+            </h5>
+            <p class="text-center mx-4">jika Anda telah melihat potensi saya atau ingin berbicara dengan saya, jangan
+                ragu untuk mengirim saya pesan. </p>
+            <div class="row d-flex justify-content-center gap-0 gap-md-2 mx-4">
+                <div class="card mb-1 col-12 col-md-5">
+                    <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                        <div class="card-body d-flex col-12 col-md-6 gap-3 align-items-center">
+                            <img src="img/gmail.svg" class="img-animasi" alt="">
+                            <div class="fw-bold">Email
+                                <div class="fs-6 fw-light">rizqi0505@gmail.com</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card mb-1 col-12 col-md-5">
+                    <a href="https://wa.me/6289517947731"
+                        style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                        <div class="card-body d-flex col-12 col-md-6 gap-3 align-items-center">
+                            <img src="img/whatsapp.svg" class="img-animasi" alt="">
+                            <div class="fw-bold">WhatsApp
+                                <div class="fs-6 fw-light">089517947731</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact end  -->
+
+
+    <!-- footer start -->
+    <div class="footer d-md-block d-none">
+        <div class="d-flex justify-content-between px-5 align-items-center py-5"
+            style="background-color: rgb(68, 62, 62);">
+            <h5 class="text-center"><span class="text-info fw-bold">Darf</span>Dev</h5>
+            <h7 class="text-white">©Copyright by Rizqi Arief Wicaksono</h7>
+            <div class="img">
+                <a href="https://github.com/wicakk" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                    <img src="img/github.svg" class="img-medium" alt="">
+                </a>
+                <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                    <img src="img/gmail.svg" class="img-medium" alt="">
+                </a>
+                <a href="https://wa.me/6289517947731"
+                    style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                    <img src="img/whatsapp.svg" class="img-medium" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer d-block d-md-none py-5" style="background-color: rgb(68, 62, 62);">
+        <h5 class="text-center"><span class="text-info fw-bold">Darf</span>Dev</h5>
+        <div class="d-flex justify-content-center">
+            <a href="https://github.com/wicakk" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                <img src="img/github.svg" class="img-medium" alt="">
+            </a>
+            <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                <img src="img/gmail.svg" class="img-medium" alt="">
+            </a>
+            <a href="https://wa.me/6289517947731" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
+                <img src="img/whatsapp.svg" class="img-medium" alt="">
+            </a>
+        </div>
+        <h7 class="text-center mx-3">©Copyright by Rizqi Arief Wicaksono</h7>
+    </div>
+    <!-- footer end -->
+
+
+
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
