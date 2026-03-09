@@ -1,280 +1,1103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <title>Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Rizqi Arief Wicaksono</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ["Inter", "sans-serif"] },
+          colors: {
+            navy: "#1a1a2e",
+            "navy-light": "#16213e",
+          },
+          animation: {
+            "float-1": "float 3s ease-in-out infinite",
+            "float-2": "float 3s ease-in-out 0.3s infinite",
+            "float-3": "float 3s ease-in-out 0.6s infinite",
+            "float-4": "float 3s ease-in-out 0.9s infinite",
+            "float-5": "float 3s ease-in-out 1.2s infinite",
+            "float-6": "float 3s ease-in-out 0.5s infinite",
+            "float-7": "float 3s ease-in-out 0.7s infinite",
+            "float-8": "float 3s ease-in-out 1.0s infinite",
+            "float-9": "float 3s ease-in-out 0.2s infinite",
+            "float-10": "float 3s ease-in-out 1.4s infinite",
+            "scroll-left": "scrollLeft 30s linear infinite",
+            "spin-slow": "spin 20s linear infinite",
+          },
+          keyframes: {
+            float: {
+              "0%,100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+            scrollLeft: {
+              "0%": { transform: "translateX(0)" },
+              "100%": { transform: "translateX(-50%)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-d2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-d3 {
+      transition-delay: 0.3s;
+    }
+
+    .testi-track {
+      animation: scrollLeft 30s linear infinite;
+    }
+
+    @keyframes scrollLeft {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .mask-fade {
+      mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom,
+          black 70%,
+          transparent 100%);
+    }
+  </style>
 </head>
 
-<body data-bs-theme="dark">
-    <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid d-flex justify-content-between align-items-center ">
-            <a class="navbar-brand" href="#"><span class="text-info fw-bold">Darf</span>Dev</a>
-            <div class="d-flex justify-content-end align-items-center">
-                <div class="form-check form-switch d-block d-md-none">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
-                        onclick="myFunction()" checked>
-                </div>
-                <button class="navbar-toggler" style="border: none;" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold active" aria-current="page" href="#header" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="#about" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Tentang Saya</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="#portfolio" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="#contact" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn-sm px-4 border-0 bg-info rounded-5">
-                            <a class="nav-link text-dark fw-medium" href="#cv" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">CV</a>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="form-check form-switch d-none mx-3 d-md-block float-end">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked
-                    onclick="myFunction()">
-            </div>
-        </div>
-    </nav>
-    <!-- navbar end  -->
+<body class="bg-white text-[#1a1a2e] overflow-x-hidden">
+  <!-- ── NAVBAR ── -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-12 py-[1.1rem] bg-white/92 backdrop-blur-xl border-b border-black/[0.06]">
+    <div class="font-extrabold text-[1.1rem] text-[#1a1a2e] tracking-tight">
+      &lt;DevCak/&gt;
+    </div>
+    <ul class="hidden md:flex gap-9 list-none">
+      <li>
+        <a href="#about"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">About</a>
+      </li>
+      <li>
+        <a href="#education"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Education</a>
+      </li>
+      <li>
+        <a href="#skills"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Skills</a>
+      </li>
+      <li>
+        <a href="#experience"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Experience</a>
+      </li>
+      <li>
+        <a href="#projects"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Projects</a>
+      </li>
+      <li>
+        <a href="#certifications"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Certifications</a>
+      </li>
+      <li>
+        <a href="#contact"
+          class="no-underline text-gray-500 text-[0.9rem] font-medium hover:text-[#1a1a2e] transition-colors nav-link">Contact</a>
+      </li>
+    </ul>
+  </nav>
 
-    <!-- header start -->
-    <section id="header">
-        <div class="contianer px-md-5 px-0">
-            <div class="row col-12 d-flex justify-content-between ">
-                <div class="col-12 col-md-6 col-lg-6 ">
-                    <div class="intro container mt-0 mt-md-5 col-12 col-md-6 d-lg-flex ">
-                        <img src="img/html.png" class="img-animasi m-left m-lg-0" alt="" />
-                        <img src="img/css.png" class="img-animasi m-left m-lg-0" alt="" />
-                        <img src="img/js.png" class="img-animasi m-left m-lg-0" alt="" />
-                        <img src="img/vue.png" class="img-animasi m-left m-lg-0" alt="" />
-                        <img src="img/react.png" class="img-animasi m-left m-lg-0" alt="" />
-                        <div class="intro-desc my-5 pt-0 pt-md-5">
-                            <div>hallo 👋</div>
-                            <h2 class="fw-bold">Rizqi Arief Wicaksono</h2>
-                            <h4 class="text-info fw-bold">Frontend Developer</h4>
-                            <p>saya adalah freshgraduate yang fokus pada pengembangan web</p>
-                            <!-- <p class="d-none d-md-block">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Necessitatibus ex ducimus quam aspernatur esse exercitationem sit nemo nihil, quaerat
-                                voluptatum illum vero quia minus perferendis accusamus. Laudantium, illo. Expedita,
-                                aspernatur.</p> -->
-                            <a href="#contact">
-                                <button
-                                    class="btn btn-info px-3 btn-sm rounded-4 fw-medium">Contact</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 mt-5 mt-md-0 px-4 align-items-center pt-5 pt-md-0">
-                    <img src="img/me.svg" class="img-fluid mt-5 mt-md-0" style="width: 500px;" alt="">
-                    <div class="d-block d-md-none text-center">
-                        <h4 class="text-center text-info">Tentang Saya</h4>
-                        <p class="text-center">
-                            Nama saya Rizqi Arief Wicaksono, saya seorang yang tertarik dalam dunia 3d desain dan
-                            memiliki
-                            antusias dalam Pemrograman. Saya bersemangat memberikan waktu saya untuk pemrograman dan
-                            meningkatkan keterampilan saya sebagai pengembang Front end.
-                        </p>
-                        <p class="text-center">
-                            Saya mengembangkan situs web menggunakan HTML, CSS, dan JavaScript. Saya selalu meningkatkan
-                            diri dengan setiap proyek yang saya buat.
-                        </p>
-                        <p class="text-center">
-                            Saya adalah orang yang berdedikasi untuk mengejar mimpi yang besar, bekerja keras dan
-                            pantang menyerah, saya selalu berusaha untuk mencapai versi terbaik saya.
+  <!-- ── HERO ── -->
+  <section id="hero"
+    class="min-h-screen flex flex-col items-center justify-end pt-20 bg-white relative overflow-hidden text-center">
+    <h1 class="text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#1a1a2e] mb-6">
+      Hi, I am a Software Developer
+    </h1>
 
-                        </p>
-                        <div class="wrepper-language mb-5 mx-4" style="overflow-x: hidden;">
-                            <p class="text-info fw-medium">Bahasa Pemrograman yang saya gunakan :</p>
-                            <div class="img-language d-flex justify-content-center">
-                                <img src="img/html.png" class="img-medium" alt="">
-                                <img src="img/css.png" class="img-medium" alt="">
-                                <img src="img/js.png" class="img-medium" alt="">
-                                <img src="img/vue.png" class="img-medium" alt="">
-                                <img src="img/react.png" class="img-medium" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- header end -->
-
-
-    <!-- about start -->
-    <section id="about" class="container py-md-5">
-        <div class="row d-none d-md-block mx-5">
-            <h4 class="text-center text-info">Tentang Saya</h4>
-            <p class="text-center">
-                Nama saya Rizqi Arief Wicaksono, saya seorang yang tertarik dalam dunia 3d desain dan
-                memiliki
-                antusias dalam Pemrograman. Saya bersemangat memberikan waktu saya untuk pemrograman dan
-                meningkatkan keterampilan saya sebagai pengembang Front end.
-            </p>
-            <p class="text-center">
-                Saya mengembangkan situs web menggunakan HTML, CSS, dan JavaScript. Saya selalu meningkatkan
-                diri dengan setiap proyek yang saya buat.
-            </p class="text-center">
-            <p class="text-center">
-                Saya adalah orang yang berdedikasi untuk mengejar mimpi yang besar, bekerja keras dan
-                pantang menyerah, saya selalu berusaha untuk mencapai versi terbaik saya.
-
-            </p>
-            <div class="wrepper-language mb-5 ">
-                <p class="text-info fw-medium text-center">Bahasa Pemrograman yang saya gunakan :</p>
-                <div class="img-language d-flex justify-content-center">
-                    <img src="img/html.png" class="img-medium" alt="">
-                    <img src="img/css.png" class="img-medium" alt="">
-                    <img src="img/js.png" class="img-medium" alt="">
-                    <img src="img/vue.png" class="img-medium" alt="">
-                    <img src="img/react.png" class="img-medium" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- about end -->
-
-    <!-- portfolio start -->
-    <section id="portfolio my-0 my-md-5">
-        <div class="container">
-            <h4 class="py-4 text-center text-info">My Portfolio</h4>
-            <div class="row d-flex justify-content-between mx-2">
-                <div class="card col-12 col-md-4 my-3">
-                    <a href="https://www.canva.com/design/DAFgaxF9Gno/pu8g-H7MNLizVAUtRDlQ6w/view?utm_content=DAFgaxF9Gno&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
-                    <div class="card-body">
-                        <img src="img/file.svg" class="icon-file" alt="">
-                        <h5 class="fw-bold mb-4" id="cv">OpernCV</h5>
-                        <p>Ini adalah sebuah data diri saya yang berisikan perkenalan saya dalam bentuk pdf</p>
-                    </div>
-                    </a>
-                </div>
-                <div class="card col-12 col-md-4 my-3">
-                    <a href="https://github.com/wicakk" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
-                    <div class="card-body">
-                        <img src="img/file.svg" class="icon-file" alt="">
-                        <h5 class="fw-bold mb-4">My Project</h5>
-                        <p>Berisikan sebuah project yang sudah pernah saya buat menggunakan laravel, bootstrap, dan react native .</p>
-                    </div>
-                    </a>
-                </div>
-                <div class="card col-12 col-md-4 my-3">
-                    <a href="#" style="text-decoration: none; color:var(--bs-gray-text-emphasis)">
-                        <div class="card-body">
-                            <img src="img/file.svg" class="icon-file" alt="">
-                            <h5 class="fw-bold mb-4">Portfolio</h5>
-                            <p>Sebuah web yang dibuat untuk dijadikan portfolio yang ditampilkan secara menarik dan responsif.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- portfolio end -->
-
-    <!-- contact start  -->
-    <section id="contact">
-        <div class="container my-5">
-            <h5 class="text-info text-center">
-                Hubungi Saya
-            </h5>
-            <p class="text-center mx-4">jika Anda telah melihat potensi saya atau ingin berbicara dengan saya, jangan
-                ragu untuk mengirim saya pesan. </p>
-            <div class="row d-flex justify-content-center gap-0 gap-md-2 mx-4">
-                <div class="card mb-1 col-12 col-md-5">
-                    <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                        <div class="card-body d-flex col-12 col-md-6 gap-3 align-items-center">
-                            <img src="img/gmail.svg" class="img-animasi" alt="">
-                            <div class="fw-bold">Email
-                                <div class="fs-6 fw-light">rizqi0505@gmail.com</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card mb-1 col-12 col-md-5">
-                    <a href="https://wa.me/6289517947731"
-                        style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                        <div class="card-body d-flex col-12 col-md-6 gap-3 align-items-center">
-                            <img src="img/whatsapp.svg" class="img-animasi" alt="">
-                            <div class="fw-bold">WhatsApp
-                                <div class="fs-6 fw-light">089517947731</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- contact end  -->
-
-
-    <!-- footer start -->
-    <div class="footer d-md-block d-none">
-        <div class="d-flex justify-content-between px-5 align-items-center py-5"
-            style="background-color: rgb(68, 62, 62);">
-            <h5 class="text-center"><span class="text-info fw-bold">Darf</span>Dev</h5>
-            <h7 class="text-white">©Copyright by Rizqi Arief Wicaksono</h7>
-            <div class="img">
-                <a href="https://github.com/wicakk" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                    <img src="img/github.svg" class="img-medium" alt="">
-                </a>
-                <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                    <img src="img/gmail.svg" class="img-medium" alt="">
-                </a>
-                <a href="https://wa.me/6289517947731"
-                    style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                    <img src="img/whatsapp.svg" class="img-medium" alt="">
-                </a>
-            </div>
-        </div>
+    <!-- Social buttons -->
+    <div class="flex gap-4 justify-center mb-12">
+      <a href="https://github.com/wicakk" target="_blank"
+        class="w-12 h-12 rounded-full border-[1.5px] border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-[#1a1a2e] hover:bg-gray-50 transition-all no-underline">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+      </a>
+      <a href="#"
+        class="w-12 h-12 rounded-full border-[1.5px] border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-[#1a1a2e] hover:bg-gray-50 transition-all no-underline">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/rizqi-arief-wicaksono" target="_blank"
+        class="w-12 h-12 rounded-full border-[1.5px] border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:border-[#1a1a2e] hover:bg-gray-50 transition-all no-underline">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
     </div>
 
+    <!-- Hero stage with floating icons + photo -->
+    <div class="relative w-full max-w-[900px] flex justify-center">
+      <!-- Left floating icons -->
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-1 w-[62px] h-[62px]"
+        style="left: 10%; top: 15%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="36" alt="React" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-2 w-[52px] h-[52px] text-[1.6rem] font-black text-black"
+        style="left: 5%; top: 42%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" width="36" alt="Vue" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-3 w-[62px] h-[62px]"
+        style="left: 14%; top: 62%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" width="36"
+          alt="Laravel" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-4 w-[62px] h-[62px]"
+        style="left: 6%; top: 79%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="36"
+          alt="PG" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-2 w-[56px] h-[56px]"
+        style="left: 29%; top: 24%">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" width="32" alt="TW" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-3 w-[54px] h-[54px] text-[1.8rem]"
+        style="left: 28%; top: 54%">
+        🔥
+      </div>
 
-    <div class="footer d-block d-md-none py-5" style="background-color: rgb(68, 62, 62);">
-        <h5 class="text-center"><span class="text-info fw-bold">Darf</span>Dev</h5>
-        <div class="d-flex justify-content-center">
-            <a href="https://github.com/wicakk" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                <img src="img/github.svg" class="img-medium" alt="">
-            </a>
-            <a href="bit.ly/rizqi0505arief" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                <img src="img/gmail.svg" class="img-medium" alt="">
-            </a>
-            <a href="https://wa.me/6289517947731" style="text-decoration: none; color: var(--bs-gray-text-emphasis);">
-                <img src="img/whatsapp.svg" class="img-medium" alt="">
-            </a>
-        </div>
-        <h7 class="text-center mx-3">©Copyright by Rizqi Arief Wicaksono</h7>
+      <!-- Center photo placeholder -->
+      <div class="">
+        <!-- <svg width="280" height="380" viewBox="0 0 200 280" fill="none">
+        <circle cx="100" cy="80" r="55" fill="#bfdbfe"/>
+        <rect x="30" y="160" width="140" height="120" rx="20" fill="#93c5fd"/>
+        <ellipse cx="100" cy="72" rx="35" ry="38" fill="#f59e0b"/>
+        <circle cx="87" cy="68" r="4" fill="#1a1a2e"/>
+        <circle cx="113" cy="68" r="4" fill="#1a1a2e"/>
+        <path d="M88 85 Q100 95 112 85" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M55 160 Q100 145 145 160 L155 280 H45Z" fill="#3b82f6"/>
+      </svg> -->
+        <img src="img/me.svg" alt="Rizqi Arief Wicaksono" class="w-[380px] h-[480px] object-cover" />
+      </div>
+
+      <!-- Right floating icons -->
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-6 w-[62px] h-[62px]"
+        style="right: 12%; top: 10%">
+        <img src="https://www.vectorlogo.zone/logos/openshift/openshift-icon.svg" width="36" alt="OpenShift" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-7 w-[62px] h-[62px] text-[0.7rem] font-bold text-[#00758f] text-center p-2"
+        style="right: 10%; top: 32%">
+        MySQL
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-8 w-[72px] h-[52px] text-[0.75rem] font-bold text-[#00acd7]"
+        style="right: -2%; top: 22%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="36"
+          alt="Docker" />
+      </div>
+      <div
+        class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-9 w-[54px] h-[54px]"
+        style="right: 16%; top: 55%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="32"
+          alt="JS" />
+      </div>
+      <div class="absolute bg-white rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] flex items-center justify-center animate-float-10 w-[62px] h-[62px]" style="right: 5%; top: 68%">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="36" alt="GitHub">
+      </div>
     </div>
-    <!-- footer end -->
+  </section>
 
+  <!-- ── TESTIMONIALS ── -->
+  <!-- <section class="py-16 overflow-hidden bg-white">
+    <div class="flex gap-6 testi-track" style="width: max-content">
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            👤
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Fajarudin
+            </div>
+            <div class="text-[0.78rem] text-gray-500">
+              Mid Developer, Fintools
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Feb
+            2026</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          An outstanding finance React & TypeScript skills are truly
+          impressive. Delivered clean, efficient code on time.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            ❓
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Kesa Purnama
+            </div>
+            <div class="text-[0.78rem] text-gray-500">
+              Mid Developer, Pt 4Net Prima
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Jan
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          During the contract period, you showed a good attitude, learned
+          quickly, and adapted well to the work environment. Moving forward,
+          continue to build confidence and take initiative.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            🧑
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Rizky Bachtiar
+            </div>
+            <div class="text-[0.78rem] text-gray-500">Client</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Dec
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          The task was completed correctly and met all the requirements. The
+          C++ implementation is clear, well-structured, and functions as
+          expected.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            ❓
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Manca Lopez
+            </div>
+            <div class="text-[0.78rem] text-gray-500">CEO of Jagoscript</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">July
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          Fast delivery, clean code, and great communication. Built our MVP in
+          record time.
+        </p>
+      </div>
 
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            👤
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Fajarudin
+            </div>
+            <div class="text-[0.78rem] text-gray-500">
+              Mid Developer, Fintools
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Feb
+            2026</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          An outstanding finance React & TypeScript skills are truly
+          impressive. Delivered clean, efficient code on time.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            ❓
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Kesa Purnama
+            </div>
+            <div class="text-[0.78rem] text-gray-500">
+              Mid Developer, Pt 4Net Prima
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Jan
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          During the contract period, you showed a good attitude and adapted
+          well. Take initiative to maximize your contribution.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            🧑
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Rizky Bachtiar
+            </div>
+            <div class="text-[0.78rem] text-gray-500">Client</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">Dec
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          The task was completed correctly and met all the requirements. Solid
+          understanding demonstrated.
+        </p>
+      </div>
+      <div class="min-w-[340px] bg-white border border-gray-200 rounded-2xl p-6 flex-shrink-0">
+        <div class="text-[2rem] text-gray-200 float-right leading-none">
+          "
+        </div>
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-lg flex-shrink-0">
+            ❓
+          </div>
+          <div>
+            <div class="font-bold text-[0.95rem] text-[#1a1a2e]">
+              Manca Lopez
+            </div>
+            <div class="text-[0.78rem] text-gray-500">CEO of Jagoscript</div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <span class="text-amber-400 text-[0.85rem]">★★★★★</span><span class="text-[0.78rem] text-gray-400 ml-2">July
+            2025</span>
+        </div>
+        <p class="text-gray-700 text-[0.85rem] leading-[1.65]">
+          Fast delivery, clean code, and great communication. Built our MVP in
+          record time.
+        </p>
+      </div>
+    </div>
+  </section> -->
 
-    <script>
-        AOS.init();
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
+  <!-- ── ABOUT ── -->
+  <section id="about" class="py-20 bg-white">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      About Me
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-12">
+      Get to know me a little better
+    </p>
+    <div class="max-w-[860px] mx-auto bg-gray-50 rounded-[20px] p-12 reveal">
+      <p class="text-[1.05rem] leading-[1.8] text-gray-700 mb-5">
+        Hi, saya
+        <strong class="text-[#1a1a2e] font-bold">Rizqi Arief Wicaksono</strong>, Mahasiswa Teknik Informatika dengan
+        pengalaman profesional di
+        <strong class="text-[#1a1a2e] font-bold">Frontend Development, PHP Development, IT Support, dan Engineer
+          Onsite</strong>. Saya memiliki kemampuan dalam analisis kebutuhan aplikasi,
+        pengembangan web, serta pengelolaan proses deployment berbasis
+        container. Terbiasa bekerja dalam tim, adaptif terhadap teknologi
+        baru, dan memiliki kemampuan problem solving yang baik.
+      </p>
+      <p class="text-[1.05rem] leading-[1.8] text-gray-700 mb-8">
+        Saya juga tertarik dengan
+        <strong class="text-[#1a1a2e] font-bold">3D desain dan pemrograman</strong>, khususnya sebagai
+        <strong class="text-[#1a1a2e] font-bold">Fullstack Developer</strong>.
+        Saya mengembangkan situs web menggunakan
+        <strong class="text-[#1a1a2e] font-bold">HTML, CSS, JavaScript, dan beberapa framework PHP</strong>, selalu
+        belajar, serta meningkatkan keterampilan melalui setiap
+        proyek. Saya berdedikasi, pantang menyerah, dan bersemangat mengejar
+        mimpi besar sambil menjadi versi terbaik dari diri saya.
+      </p>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="bg-white border border-gray-200 rounded-[14px] p-5 text-center">
+          <div class="text-[1.4rem] mb-2">&lt;/&gt;</div>
+          <div class="text-[0.82rem] text-gray-500 font-medium">
+            Fullstack Developer
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-[14px] p-5 text-center">
+          <div class="text-[1.4rem] mb-2">🖥️</div>
+          <div class="text-[0.82rem] text-gray-500 font-medium">
+            IT Support & DevOps
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-[14px] p-5 text-center">
+          <div class="text-[1.4rem] mb-2">📍</div>
+          <div class="text-[0.82rem] text-gray-500 font-medium">
+            Bogor, Indonesia
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-[14px] p-5 text-center">
+          <div class="text-[1.4rem] mb-2">🎯</div>
+          <div class="text-[0.82rem] text-gray-500 font-medium">
+            Problem Solver
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education" class="py-20 bg-gray-50">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      Education
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-12">
+      Academic background in Information Systems and Software Engineering
+    </p>
+    <div class="relative max-w-[900px] mx-auto px-8">
+      <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 -translate-x-1/2"></div>
+     
+      <div class="flex mb-12 pr-[calc(50%+2rem)] relative reveal">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-7 w-full shadow-sm">
+          <div class="w-12 h-12 bg-[#00acd7] rounded-xl flex items-center justify-center text-xl text-white mb-4">
+            🎓
+          </div>
+          <div class="font-bold text-[#1a1a2e]">
+            Universitas Bina Sarana Informatika
+          </div>
+          <div class="font-semibold text-[0.9rem] text-gray-700">
+            Sarjana Informatika Terapan
+          </div>
+          <!-- <div class="text-[0.78rem] text-gray-400 font-mono mb-3">
+            Smart City
+          </div> -->
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-3">
+            <span>📅 2024 — 2028</span><span>📍 Bekasi, Indonesia</span>
+          </div>
+          <p class="text-[0.85rem] text-gray-500 leading-[1.6] mb-3">
+            Saat ini sedang menempuh pendidikan sarjana di bidang Informatika Terapan dengan fokus pada teknologi Jaringan, Cyber Security, dan pengembangan perangkat lunak modern.
+          </p>
+          <span
+            class="inline-flex items-center gap-1 bg-green-50 text-green-600 text-[0.75rem] font-semibold px-3 py-1 rounded-full before:content-['●'] before:text-[0.6rem]">Sedang Menempuh</span>
+        </div>
+      </div>
+    
+      <div class="flex flex-row-reverse mb-12 pl-[calc(50%+2rem)] relative reveal reveal-d1">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-7 w-full shadow-sm">
+          <div class="w-12 h-12 bg-[#00acd7] rounded-xl flex items-center justify-center text-xl text-white mb-4">
+            📚
+          </div>
+          <div class="font-bold text-[#1a1a2e]">SMKN 6 KOTA BEKASI</div>
+          <div class="font-semibold text-[0.9rem] text-gray-700">
+            Sekolah Menengah Kejuruan (SMK)
+          </div>
+          <div class="text-[0.78rem] text-gray-400 font-mono mb-3">
+            Rekayasa Perangkat Lunak (RPL)
+          </div>
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-3">
+            <span>📅 2020 — 2023</span><span>📍 Bekasi, Indonesia</span>
+          </div>
+          <p class="text-[0.85rem] text-gray-500 leading-[1.6] mb-3">
+            Lulusan Rekayasa Perangkat Lunak, dengan dasar yang kuat dalam pemrograman dan pengembangan web.
+          </p>
+          <span
+            class="inline-flex items-center gap-1 bg-sky-50 text-sky-600 text-[0.75rem] font-semibold px-3 py-1 rounded-full">Lulus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="py-20 bg-white">
+    <div
+      class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5 text-[1.1rem] text-white font-bold">
+      &lt;/&gt;
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      Skills &amp; Expertise
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-12">
+      Technologies and methodologies I work with daily
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1100px] mx-auto px-8">
+      <!-- Frontend -->
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-[#00acd7] rounded-xl flex items-center justify-center text-white font-bold">
+            &lt;/&gt;
+          </div>
+          <div class="text-[1.1rem] font-bold text-[#1a1a2e]">Frontend</div>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">React.js</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Vue.js</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">JavaScript</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Tailwind CSS</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Bootstrap</span>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="reveal reveal-d1">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-[#00acd7] rounded-xl flex items-center justify-center text-white text-xl">
+            ⚙️
+          </div>
+          <div class="text-[1.1rem] font-bold text-[#1a1a2e]">Backend</div>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Laravel</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">MySQL</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">PostgreSQL</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">REST API</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="reveal reveal-d2">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 bg-[#00acd7] rounded-xl flex items-center justify-center text-white text-xl">
+            🔧
+          </div>
+          <div class="text-[1.1rem] font-bold text-[#1a1a2e]">Tools &amp; Skills</div>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Git &amp; GitLab</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Openshift</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Livewire</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Problem Solving</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Team Collaboration</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Docker</span>
+        </div>
+        <div class="flex items-center px-4 py-3 bg-gray-50 rounded-xl mb-2 border border-gray-100">
+          <span class="text-[0.9rem] font-medium text-gray-700">Time Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience" class="py-20 bg-gray-50">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/><path d="M2 12h20"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      Work Experience
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-12">
+      Professional journey across fintech, SaaS, and enterprise solutions
+    </p>
+    <div class="relative max-w-[900px] mx-auto px-8">
+      <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 -translate-x-1/2"></div>
+
+      <!-- PKL - left -->
+      <div class="flex mb-12 pr-[calc(50%+2rem)] relative reveal">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 w-full shadow-sm">
+          <div class="font-bold text-[1.05rem] text-[#1a1a2e] mb-1">
+            Praktik Kerja Industri (PKL)
+          </div>
+          <div class="font-bold text-[0.9rem] text-gray-700 mb-3">
+            SMK / Sekolah Kejuruan
+          </div>
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-4">
+            <span>📅 6 Bulan</span><span>📍 Indonesia</span>
+          </div>
+          <ul class="list-none p-0 space-y-2">
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Membuat user interface (UI/UX) yang menarik dan intuitif
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Membuat website yang user friendly dan responsif
+            </li>
+          </ul>
+          <div class="w-10 h-1 bg-cyan-400 rounded mt-4"></div>
+        </div>
+      </div>
+
+      <!-- Magang StaveSoft - right -->
+      <div class="flex flex-row-reverse mb-12 pl-[calc(50%+2rem)] relative reveal reveal-d1">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 w-full shadow-sm">
+          <div class="font-bold text-[1.05rem] text-[#1a1a2e] mb-1">
+            PHP Developer Intern
+          </div>
+          <div class="font-bold text-[0.9rem] text-gray-700 mb-3">
+            StaveSoft
+          </div>
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-4">
+            <span>📅 Magang · 2 Bulan</span><span>📍 Indonesia</span>
+          </div>
+          <ul class="list-none p-0 space-y-2">
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Menambahkan fitur-fitur baru pada aplikasi perusahaan
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Melakukan problem shooting dan debugging pada sistem
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Mengerjakan proyek company profile berbasis web
+            </li>
+          </ul>
+          <div class="w-10 h-1 bg-cyan-400 rounded mt-4"></div>
+        </div>
+      </div>
+
+      <!-- IT Helpdesk - left -->
+      <div class="flex mb-12 pr-[calc(50%+2rem)] relative reveal reveal-d2">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 w-full shadow-sm">
+          <div class="font-bold text-[1.05rem] text-[#1a1a2e] mb-1">
+            IT Helpdesk
+          </div>
+          <div class="font-bold text-[0.9rem] text-gray-700 mb-3">
+            PT Digital Transform Teknologi
+          </div>
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-4">
+            <span>📅 Purnawaktu · 1 Tahun 6 Bulan</span><span>📍 Indonesia</span>
+          </div>
+          <ul class="list-none p-0 space-y-2">
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Melayani dan menangani kendala teknis yang dialami user
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Melakukan pengecekan dan analisis issue yang dilaporkan
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Membuat laporan dan monitoring aplikasi secara rutin
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Melakukan problem solving dan troubleshooting permasalahan teknis
+            </li>
+          </ul>
+          <div class="w-10 h-1 bg-cyan-400 rounded mt-4"></div>
+        </div>
+      </div>
+     
+
+      <!-- Engineer Onsite - left -->
+      <div class="flex flex-row-reverse mb-12 pl-[calc(50%+2rem)] relative reveal reveal-d3">
+        <div class="absolute left-1/2 top-6 w-3 h-3 rounded-full bg-[#1a1a2e] -translate-x-1/2 z-10"></div>
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 w-full shadow-sm">
+          <div class="font-bold text-[1.05rem] text-[#1a1a2e] mb-1">
+            Engineer Onsite
+          </div>
+          <div class="font-bold text-[0.9rem] text-gray-700 mb-3">
+            PT Amoro Teknologi Indonesia
+          </div>
+          <div class="flex gap-6 text-[0.8rem] text-gray-500 mb-4">
+            <span>📅 Hingga Saat Ini</span><span>📍 Indonesia</span>
+          </div>
+          <ul class="list-none p-0 space-y-2">
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Memelihara dan troubleshooting cluster Red Hat OpenShift pada environment produksi dan pengembangan
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Menginstal dan mengimplementasikan Jenkins untuk kebutuhan CI/CD pipeline
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Memantau kesehatan pods, nodes, dan workloads melalui OpenShift dashboard
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Menangani error pada pods dan proses deployment aplikasi
+            </li>
+            <li class="flex items-start gap-2 text-[0.85rem] text-gray-700 leading-[1.6]">
+              <span class="text-gray-500 text-[1.1rem] mt-0.5 flex-shrink-0">›</span>Berkolaborasi dengan tim developer dan DevOps untuk memastikan deployment berjalan efektif dan otomatis
+            </li>
+          </ul>
+          <div class="w-10 h-1 bg-cyan-400 rounded mt-4"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="py-20 bg-gray-50">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      Featured Projects
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-8">
+      Real-world applications with measurable impact
+    </p>
+    <!-- Filter buttons -->
+    <!-- <div class="flex gap-3 justify-center mb-10 flex-wrap">
+      <button onclick="filterProj('featured', this)"
+        class="filter-btn flex items-center gap-1 px-5 py-2 rounded-full text-[0.85rem] font-semibold border-[1.5px] border-[#1a1a2e] bg-[#1a1a2e] text-white transition-all">
+        ⚡ Featured
+      </button>
+      <button onclick="filterProj('personal', this)"
+        class="filter-btn flex items-center gap-1 px-5 py-2 rounded-full text-[0.85rem] font-semibold border-[1.5px] border-violet-400 text-violet-600 bg-white hover:bg-violet-600 hover:text-white transition-all">
+        👤 Personal Project
+      </button>
+      <button onclick="filterProj('beta', this)"
+        class="filter-btn flex items-center gap-1 px-5 py-2 rounded-full text-[0.85rem] font-semibold border-[1.5px] border-green-400 text-green-600 bg-white hover:bg-green-600 hover:text-white transition-all">
+        ▶ Beta
+      </button>
+    </div> -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1100px] mx-auto px-8 items-center reveal">
+      <!-- Preview -->
+      <div class="rounded-2xl overflow-hidden h-[400px] relative group">
+  <!-- Background image -->
+  <img 
+    src="img/project.jpeg" 
+    alt="Company Profile CMS & Absensi App" 
+    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+  />
+  
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/60 to-transparent"></div>
+
+  <!-- Tech badges — top -->
+  <div class="absolute top-4 left-4 flex gap-2 flex-wrap">
+    <span class="bg-white/15 backdrop-blur-sm text-white text-[0.7rem] font-semibold px-3 py-1 rounded-full border border-white/20">Laravel</span>
+    <span class="bg-white/15 backdrop-blur-sm text-white text-[0.7rem] font-semibold px-3 py-1 rounded-full border border-white/20">Flutter</span>
+    <span class="bg-[#00acd7]/80 backdrop-blur-sm text-white text-[0.7rem] font-semibold px-3 py-1 rounded-full">Rest API</span>
+  </div>
+
+  <!-- Content — bottom -->
+  <div class="absolute bottom-0 left-0 right-0 p-6">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      <span class="text-green-400 text-[0.72rem] font-semibold uppercase tracking-widest">Personal Project</span>
+    </div>
+    <h3 class="text-white font-bold text-[1.2rem] leading-[1.3] mb-1">
+      Company Profile CMS<br/>& Aplikasi Absensi
+    </h3>
+    <p class="text-white/60 text-[0.78rem] leading-[1.5]">
+      Laravel · Flutter · REST API · MySQL
+    </p>
+  </div>
+</div>
+      <!-- Info -->
+      <div>
+        <h3 class="text-[1.6rem] font-bold text-[#1a1a2e] mb-4 leading-[1.2]">
+          Company Profile CMS & APP Absensi (Laravel + Flutter )
+        </h3>
+        <p class="text-[0.9rem] text-gray-700 leading-[1.7] mb-6">
+          A full-stack integrated system consisting of two interconnected platforms. The Company Profile CMS is built with Laravel, enabling admins to manage all website content dynamically — hero, about, services, team, portfolio, and contact sections — through a clean dashboard with role-based access, image management, and SEO configuration. The Attendance App combines a Flutter mobile application with a Laravel backend, allowing employees to check in/out via GPS location validation and face recognition, while HR admins monitor logs, manage schedules, handle leave requests, and export attendance reports in PDF/Excel format — all synced in real-time through a REST API.
+        </p>
+        <div
+          class="flex items-center gap-2 bg-blue-50 text-blue-700 text-[0.82rem] font-medium px-4 py-3 rounded-xl before:content-['↗'] before:text-[1rem]">
+          Get Started
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <section id="certifications" class="py-20 bg-white">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] text-center mb-2">
+      Certifications
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-center text-gray-500 text-[0.95rem] mb-12">
+      Continuous learning and professional development
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-[1100px] mx-auto px-8 reveal">
+      <div
+        class="bg-white border-[1.5px] border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:border-[#1a1a2e] hover:shadow-md transition-all cursor-pointer relative group">
+        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-[1.1rem] flex-shrink-0">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Junior Frontend Developer Internship
+          </div>
+          <div class="text-[0.75rem] text-gray-500">
+            PT Bullnium Blockchain Indonesia
+          </div>
+          <div class="text-[0.72rem] text-gray-400">2023</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+    
+      <div
+        class="bg-white border-[1.5px] border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:border-[#1a1a2e] hover:shadow-md transition-all cursor-pointer relative group">
+        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-[1.1rem] flex-shrink-0">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Web Programming
+          </div>
+          <div class="text-[0.75rem] text-gray-500">
+            Lembaga Sertifikasi Profesi (LSP)
+          </div>
+          <div class="text-[0.72rem] text-gray-400">2023</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+      <div
+        class="bg-white border-[1.5px] border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:border-[#1a1a2e] hover:shadow-md transition-all cursor-pointer relative group">
+        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-[1.1rem] flex-shrink-0">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Dasar Cloud dan Gen AI di AWS
+          </div>
+          <div class="text-[0.75rem] text-gray-500">Dicoding</div>
+          <div class="text-[0.72rem] text-gray-400">2024</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+      <div
+        class="bg-white border-[1.5px] border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:border-[#1a1a2e] hover:shadow-md transition-all cursor-pointer relative group">
+        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-[1.1rem] flex-shrink-0">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)
+          </div>
+          <div class="text-[0.75rem] text-gray-500">Dicoding</div>
+          <div class="text-[0.72rem] text-gray-400">2024</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+      <div
+        class="bg-gray-50 border-[1.5px] border-[#1a1a2e] rounded-2xl p-5 flex items-center gap-4 hover:shadow-md transition-all cursor-pointer relative group">
+        <div
+          class="w-12 h-12 rounded-xl bg-[#1a1a2e] flex items-center justify-center text-[1.1rem] flex-shrink-0 text-white">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Code Generation and Optimization Using IBM Granite
+          </div>
+          <div class="text-[0.75rem] text-gray-500">IBM</div>
+          <div class="text-[0.72rem] text-gray-400">2025</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+      
+      <div
+        class="bg-white border-[1.5px] border-gray-200 rounded-2xl p-5 flex items-center gap-4 hover:border-[#1a1a2e] hover:shadow-md transition-all cursor-pointer relative group">
+        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-[1.1rem] flex-shrink-0">
+          🏅
+        </div>
+        <div>
+          <div class="text-[0.85rem] font-bold text-[#1a1a2e] leading-[1.3] mb-1">
+            Introduction to Cybersecurity
+          </div>
+          <div class="text-[0.75rem] text-gray-500">Cisco</div>
+          <div class="text-[0.72rem] text-gray-400">2024</div>
+        </div>
+        <span class="absolute right-4 top-4 text-gray-400 group-hover:text-[#1a1a2e] transition-colors">↗</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="py-24 bg-gray-50 text-center">
+    <div class="w-[60px] h-[60px] bg-[#00acd7] rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </div>
+    <h2 class="text-[clamp(2rem,5vw,3rem)] font-extrabold text-[#1a1a2e] mb-2">
+      Let's Work Together
+    </h2>
+    <div class="w-[60px] h-1 bg-[#1a1a2e] rounded mx-auto mb-4"></div>
+    <p class="text-gray-500 text-[0.95rem] max-w-[600px] mx-auto mb-0">
+      I'm always open to discussing new projects, creative ideas, or
+      opportunities to be part of your visions.
+    </p>
+    <div class="flex gap-4 justify-center mb-8 flex-wrap">
+      <a href="mailto:rizqiarief022@gmail.com"
+        class="inline-flex items-center gap-2 bg-[#1a1a2e] text-white no-underline px-8 py-3 rounded-xl text-[0.9rem] font-semibold hover:bg-black transition-all hover:-translate-y-0.5">✉
+        Send Email</a>
+      <a href="https://www.linkedin.com/in/rizqi-arief-wicaksono" target="_blank"
+        class="inline-flex items-center gap-2 bg-white text-[#1a1a2e] no-underline px-8 py-3 rounded-xl text-[0.9rem] font-semibold border-[1.5px] border-gray-200 hover:border-[#1a1a2e] transition-all hover:-translate-y-0.5">Connect
+        on LinkedIn</a>
+    </div>
+    <div class="text-gray-400 text-[0.85rem]">rizqiarief022@gmail.com</div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bg-[#00acd7] text-white px-12 py-8 flex items-center justify-between flex-wrap gap-4">
+    <div class="font-extrabold text-[1rem] tracking-tight">
+      &lt;DevCak/&gt;
+    </div>
+    <div class="text-[0.78rem] text-white/50">
+      © 2025 Rizqi Arief Wicaksono. All rights reserved.
+    </div>
+    <div class="flex gap-5">
+      <a href="https://github.com/wicakk" target="_blank"
+        class="text-white/50 no-underline text-[0.82rem] hover:text-white transition-colors">GitHub</a>
+      <a href="https://www.linkedin.com/in/rizqi-arief-wicaksono" target="_blank"
+        class="text-white/50 no-underline text-[0.82rem] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:rizqiarief022@gmail.com"
+        class="text-white/50 no-underline text-[0.82rem] hover:text-white transition-colors">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.1 },
+    );
+    reveals.forEach((el) => observer.observe(el));
+
+    // Active nav
+    const sections = document.querySelectorAll("section[id]");
+    window.addEventListener("scroll", () => {
+      let cur = "";
+      sections.forEach((s) => {
+        if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+      });
+      document.querySelectorAll(".nav-link").forEach((a) => {
+        a.classList.toggle(
+          "text-[#1a1a2e]",
+          a.getAttribute("href") === "#" + cur,
+        );
+        a.classList.toggle(
+          "text-gray-500",
+          a.getAttribute("href") !== "#" + cur,
+        );
+      });
+    });
+
+    // Project filter
+    function filterProj(type, btn) {
+      document.querySelectorAll(".filter-btn").forEach((b) => {
+        b.classList.remove("bg-[#1a1a2e]", "text-white", "border-[#1a1a2e]");
+      });
+      btn.classList.add("bg-[#1a1a2e]", "text-white", "border-[#1a1a2e]");
+    }
+  </script>
 </body>
 
 </html>
